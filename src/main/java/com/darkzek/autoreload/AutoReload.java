@@ -78,12 +78,8 @@ public class AutoReload extends JavaPlugin {
                         if (pluginName == null) {
                             continue;
                         }
-
                         //Send command synchronously
-                        Bukkit.getScheduler().callSyncMethod( this, () -> Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "plugman reload " + pluginName));
-                        Bukkit.getServer().broadcastMessage("Successfully reloaded " + pluginName + "!");
-                        timeSinceLastChanged.remove(fileName);
-                        timeSinceLastChanged.put(fileName, listOfFiles[i].lastModified());
+                        Bukkit.shutdown();
                     }
                 }
             }
